@@ -194,8 +194,10 @@ export const ReservationProvider: React.FC<ReservationProviderProps> = ({ childr
         .subscribe();
 
       return () => {
-        supabase.removeChannel(reservationsChannel);
-        supabase.removeChannel(customersChannel);
+        if (supabase) {
+          supabase.removeChannel(reservationsChannel);
+          supabase.removeChannel(customersChannel);
+        }
       };
     }
   }, []);
@@ -236,7 +238,7 @@ export const ReservationProvider: React.FC<ReservationProviderProps> = ({ childr
     if (supabase) {
       try {
         dispatch({ type: 'SET_LOADING', payload: true });
-        const { data, error } = await supabase
+        const { error } = await supabase
           .from('reservations')
           .insert([reservation])
           .select();
@@ -315,7 +317,7 @@ export const ReservationProvider: React.FC<ReservationProviderProps> = ({ childr
     if (supabase) {
       try {
         dispatch({ type: 'SET_LOADING', payload: true });
-        const { data, error } = await supabase
+        const { error } = await supabase
           .from('customers')
           .insert([customer])
           .select();

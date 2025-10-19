@@ -6,7 +6,7 @@ import TimePicker from './TimePicker';
 import Notification from './Notification';
 
 const ReservationForm: React.FC = () => {
-  const { state, addReservation, addCustomer, setCustomers } = useReservation();
+  const { state, addReservation, addCustomer } = useReservation();
   const [formData, setFormData] = useState({
     customerName: '',
     phone: '',
@@ -271,7 +271,6 @@ const ReservationForm: React.FC = () => {
               預約時間 <span className="text-red-500">*</span>
             </label>
             <TimePicker
-              name="reservationTime"
               value={formData.reservationTime}
               onChange={(value) => setFormData(prev => ({ ...prev, reservationTime: value }))}
               className={`${errors.reservationTime ? 'border-red-500' : 'border-gray-300'}`}

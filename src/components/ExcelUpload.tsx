@@ -5,7 +5,7 @@ import { Customer } from '../types';
 import { parseExcelFile } from '../utils/excel';
 
 const ExcelUpload: React.FC = () => {
-  const { addCustomer, setCustomers } = useReservation();
+  const { addCustomer } = useReservation();
   const [file, setFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [message, setMessage] = useState('');

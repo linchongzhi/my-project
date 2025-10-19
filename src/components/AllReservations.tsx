@@ -22,21 +22,7 @@ const AllReservations: React.FC = () => {
     setReservationToDelete(id);
   };
 
-  const confirmDelete = (id: string) => {
-    deleteReservation(id);
-    setNotification({ message: '預約已成功刪除！', type: 'success' });
-    setReservationToDelete(null);
-    
-    // 3秒后清除成功通知
-    setTimeout(() => {
-      setNotification(null);
-    }, 3000);
-  };
 
-  const cancelDelete = () => {
-    setReservationToDelete(null);
-    setNotification(null);
-  };
 
   // 按日期分组预约
   const groupedReservations = sortedReservations.reduce((groups, reservation) => {
